@@ -10,9 +10,3 @@
   file: 
     dest=/var/run/openvpn-isup.sleep
     state=touch
-
-- name: setup cronjob for checking VPN status
-  cron:
-    name="Teardown the droplet if VPN is not used"
-    state=present
-    job="/usr/local/bin/openvpn-isup || /usr/local/bin/tugboat destroy -c -n vpn"

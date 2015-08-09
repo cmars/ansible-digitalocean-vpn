@@ -6,15 +6,7 @@
 - name: update apt cache
   apt: update_cache=yes cache_valid_time=86400
 
-- name: remove extra packages
-  apt: pkg={{ item }} state=absent
-  with_items:
-  - nano
+- name: generate static key
+  local_action: shell openvpn --genkey --secret files/static.key
+  sudo: no
 
-- name: install required packages
-  apt: pkg={{ item }} state=latest
-  with_items:
-  - vim
-  - htop
-  - git
-  - python-keyczar # required to use accelerated mode

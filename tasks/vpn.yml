@@ -1,6 +1,6 @@
 ---
 - name: install openvpn server
-  apt: pkg=openvpn state=installed
+  apt: pkg=openvpn state=latest
 
 - name: create masquerading script
   copy:
